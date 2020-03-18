@@ -1,3 +1,5 @@
+# Project developed as practice by Raul Palacios [Youtube](https://www.youtube.com/playlist?list=PLIddmSRJEJ0vEBB6ECegg35IQ-sWjSDdo)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
