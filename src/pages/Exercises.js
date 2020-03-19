@@ -2,6 +2,7 @@ import React from 'react';
 
 import Welcome from '../components/Welcome';
 import ExerciseList from '../components/ExerciseList';
+import AddButton from '../components/AddButton';
 
 class Exercises extends React.Component {
   constructor(props) {
@@ -42,6 +43,7 @@ class Exercises extends React.Component {
       <div>
         <Welcome username="Jorgito" />
         <ExerciseList exercises={data} />
+        <AddButton />
       </div>
     );
   }
