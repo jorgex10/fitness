@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 
 import ExercisesForm from '../components/ExercisesForm';
@@ -6,56 +7,62 @@ import '../components/styles/ExercisesNew.css';
 import FatalError from './500';
 
 class ExercisesNew extends React.Component {
-  state = {
-    form: {
-      title: '',
-      description: '',
-      img: '',
-      leftColor: '',
-      rightColor: ''
-    },
-    error: null,
-    loading: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      form: {
+        title: '',
+        description: '',
+        img: '',
+        leftColor: '',
+        rightColor: '',
+      },
+      error: null,
+      loading: false,
+    };
   }
 
   handleChange = (e) => {
+    const { form } = this.state;
+
     this.setState({
       form: {
-        ...this.state.form,
-        [e.target.name]: e.target.value
-      }
+        ...form,
+        [e.target.name]: e.target.value,
+      },
     });
   }
 
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { history } = this.props
+    const { history } = this.props;
+    const { form } = this.state;
 
     this.setState({
-      loading: true
+      loading: true,
     });
 
     try {
-      let config = {
+      const config = {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(this.state.form)
-      }
-      let res = await fetch("http://localhost:8000/api/exercises", config);
-      let json = await res.json();
+        body: JSON.stringify(form),
+      };
+      const res = await fetch('http://localhost:8000/api/exercises', config);
+      const json = await res.json();
       console.log(json);
       this.setState({
-        loading: false
+        loading: false,
       });
-      history.push('/exercises/')
+      history.push('/exercises/');
     } catch (error) {
       this.setState({
         loading: false,
-        error
+        error,
       });
     }
   }
@@ -63,8 +70,7 @@ class ExercisesNew extends React.Component {
   render() {
     const { form, error } = this.state;
 
-    if (error)
-      return <FatalError />
+    if (error) { return <FatalError />; }
 
     return (
       <div className="ExerciseNew_Lateral_Spaces row">
