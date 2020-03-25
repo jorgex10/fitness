@@ -1,10 +1,10 @@
 import React from 'react';
 
+import '../components/styles/ExercisesNew.css';
 import ExercisesNew from './ExercisesNew';
 import FatalError from './500';
-
-import '../components/styles/ExercisesNew.css';
 import Loading from '../components/Loading';
+import url from '../config';
 
 class ExercisesNewContainer extends React.Component {
   constructor(props) {
@@ -52,7 +52,7 @@ class ExercisesNewContainer extends React.Component {
         },
         body: JSON.stringify(form),
       };
-      const res = await fetch('http://localhost:8000/api/exercises', config);
+      const res = await fetch(`${url}/exercises`, config);
       const json = await res.json();
       console.log(json);
       this.setState({
