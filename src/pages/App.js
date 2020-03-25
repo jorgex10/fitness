@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Exercises from './Exercises';
-import ExercisesNew from './ExercisesNew';
+import ExercisesContainer from './ExercisesContainer';
+import ExercisesNewContainer from './ExercisesNewContainer';
 import NotFound from './404';
 
 const App = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/exercises" exact component={Exercises} />
-      <Route path="/exercises/new" exact component={ExercisesNew} />
+      <Route path="/exercises" exact component={ExercisesContainer} />
+      <Route path="/exercises/new" exact component={ExercisesNewContainer} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>
