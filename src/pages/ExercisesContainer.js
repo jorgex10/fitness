@@ -1,28 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import Loading from '../components/Loading';
 import Exercises from './Exercises';
 import FatalError from './500';
+import useFetch from '../hooks/useFetch';
 
 const ExercisesContainer = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchExercises = async () => {
-      try {
-        const res = await fetch('http://localhost:8000/api/exercises');
-        const apiData = await res.json();
-        setData(apiData);
-        setLoading(false);
-      } catch (errors) {
-        setLoading(false);
-        setError(errors);
-      }
-    };
-    fetchExercises();
-  }, []);
+  const { data, loading, error } = useFetch('http://localhost:8000/api/exercises');
 
   if (loading) { return <Loading />; }
 
